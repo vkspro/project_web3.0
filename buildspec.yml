@@ -1,0 +1,32 @@
+version: 0.2
+phases:
+ install:
+   runtime-versions: 
+     nodejs: 14
+   commands:
+     - node --version
+
+
+ build:
+   commands:
+     - echo Build started on `date`
+     - pwd && ls -lah
+     - echo installing project dependency.
+     - npm install
+     - echo building project
+     - npm run build
+     - cd dist
+     - ls -alsh
+
+ post_build:
+   commands:
+     - echo Build completed on `date`
+     - echo current directory 
+     - pwd
+     
+artifacts:
+  files:
+    - build/**/*
+    - appspec.yml
+    - script/**/*
+    
